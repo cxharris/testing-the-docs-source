@@ -2,17 +2,24 @@
 sidebar_position: 1
 ---
 
-# Why automate doc testing?
+# Automated doc testing
+This part of the site focuses on using automated tools to test documentation and content outputs. 
 
-Being able to deliver your docs online instead of in printed form is a welcome blessing for most tech writers. But there **can** be a few headaches.  If you can publish thousands of pages at the press of a button, repeatedly, it becomes impossible to manually check final outputs for correctness each and every time. Errors creep in - and when they do, it can get messy very quickly. What's needed is a way to use the power of automation to test and validate our content - at least at every publishing event, eliminating a lot of the tedium and mistakes that happen when human beings are forced to do the job. Even better, if this task can be performed by the very same technical writers and content developers who maintain the information in the first place, then we can set up a virtuous feedback loop that amplifies the power of our teams.
+The core idea is that we can use existing automation tools and techniques to root out content errors, in much the same way that software engineers can use the same tools to identify coding errors.
 
-Ever since there have been online web applications, engineers have sought to use computers to test them. *Automated browser testing tools*, as they are called, are a well-established segment of the software industry, but there's a huge latent potential for their productive use in documentation and technical content workflows as well as their well-established presence in the software development lifecycle. What's more, in the case of online content, the universe of possible tests is vastly smaller than is the case with broader software development, which bodes well for how quick it is going to be to get up to speed with these new concepts and techniques in a documentation and content context. 
+## Why do it?
+
+Being able to deliver our docs online instead of in printed form is an overdue but welcome blessing for most tech writers. But there _can_ be a few headaches. Our ability to publish thousands of pages at the press of a button makes it impossible to review the outputs for correctness each time. Errors creep in - and when they do, it can get messy very quickly. 
+
+What's needed is a way to harness the power of automation to test and validate our content, eliminating a lot of the tedium and mistakes that happen when human beings are forced to do the job. Even better, if this task can be performed by the same technical writers and content developers who maintain the information in the first place, then we can set up a virtuous feedback loop that amplifies the power of writing teams.
+
+*Automated browser testing tools* are a well-established segment of the software industry, used by engineers everywhere to test their web applications. But there's also a huge latent potential for their productive use in documentation and technical content workflows. What's more, with online content, the universe of possible tests is vastly smaller than is the case across the general reach of software development, making the entire proposition eminently workable, even for very small teams or perhaps even solo writers.
 ## Use cases
 
 In case you're wondering what kinds of things it's possible to automatically test, here's a taster:
 
 - Checking that your content delivery site is up and available in the first place
-- Validating that a new topic or article has made it through to the latest published version
+- Validating that a new topic or article, or even just a changed sentence, has made it through to the latest published version
 - Ensuring that all headers/footers reference the correct version for the publication
 - Checking that a page contains (or does not contain) some specific required (or proscribed) item of content or text
 - Confirming that a documentation defect has been fixed and tracked into production
@@ -26,92 +33,15 @@ In case you're wondering what kinds of things it's possible to automatically tes
 
 What can make things challenging is that there's no one-size-fits-all approach to these tests. It depends on all sorts of factors relating to how your content website was built or generated. In addition, in the EU at least, there are often cookie-warning popups that have to be navigated before the actual contents of a site can be examined. All of this combines to make the effort non-trivial but worth it in the end - you'll be in a position where you can hear the alarm bells ringing well before senior management is even aware that anything is wrong!
 
-### A programming mindset
-One dimension in which automated testing tools vary is in the amount of programming knowledge required by their users. There are indeed online testing systems that require no programming knowledge at all. Equally, there are those that are specifically targeted at software development professionals and require deep understanding of a language and its idioms. Life being what it is, the tools at the 'no programming' end of the spectrum are very often not powerful or fluent enough to do the jobs technical writers and other content developers need them to do. We need to find a *sweet spot* in complexity - a place where we have the power and expressiveness we need, but not to overdo it and have to pay a consequent cost in terms of cognitive overhead and reduction in productivity.
+### Batteries not included
+For the sake of being explicit, we are _not_ in the business of using automated tests to drive the execution of embedded code examples. This is a great idea and is done well in the Rust documentation (https://doc.rust-lang.org/rustdoc/documentation-tests.html). In the present context, our goal is to explore an approach to testing and validating _regular content_ itself - something that seems to have been neglected in common practice.
 
-As it happens, several tools successfully walk this line between complexity and ease of use and we will meet a selection as we progress through the chapters. We'll also be working with the open source Visual Studio Code editor (known more commonly as simply *VSCode* and not to be confused with the closed source Microsoft product *Visual Studio*. Sheesh.) and a number of recommended extensions - but more about VSCode later.
-
-Most of the time we will be issuing commands to a tool that records our desired test actions and *generates* and saves the code of a program in JavaScript. So most of the time, to the extent that we will need to program at all, we will need to make changes to that generated code, often small changes, rather than create standalone programs. Why JavaScript? Well, it jives well with the ecology of browsers and the web and the most suitable automated test tools for our purposes all use JavaScript as their base language. 
-
-As a first glimpse of what I mean, here is the full (generated) program code of a test that visits `https://www.wikipedia.org/` to simply check that it is alive and kicking:
-
-```JavaScript
-const { openBrowser, goto, closeBrowser } = require('taiko');
-(async () => {
-    try {
-        await openBrowser();
-        await goto("https://www.wikipedia.org/");
-    } catch (error) {
-        console.error(error);
-    } finally {
-        await closeBrowser();
-    }
-})();
-```
-Even if you've never written a line of JavaScript in your life, and even if you think the above code looks rather complicated, it's pretty obvious that most of the interesting action happens in the line 
-
-```JavaScript
-await goto("https://www.wikipedia.org/");
-```
-You're probably already thinking that there's a fair chance that if you change the Wikipedia URL to a different valid URL, you'll change the test to check that different site instead - and you'd be right! You don't have to understand much more than this to make a good start in building your own library of content tests.
-
-But enough, we're already ahead of ourselves!
-## Goals
-If it isn't obvious, what we're shooting for here is a way to improve the quality, reliability and timeliness of a typical online publishing lifecycle, without busting the budget or requiring large injections of unfunded resources. Incidentally, and to reiterate what is stated in the preamble, none of the techniques described will be limited to *software documentation* - they apply equally to other types of published output involving media, words and images - online magazines, newspapers and so on. If something reaches a user via a browser and html, then it is fair game for us!
-
+## If we only had a plan!
+Remember I said there's no one-size-fits-all kind of solution? So we're going to explore a bunch of automated test tools that vary in their approaches, and assess them for their suitability for testing doc output, implementing the same set of tests in each of the different tools, so that you can form a valid judgment of what jives best with your writing practices and testing needs.
 ## Audience
-This book is written for content developers for whom it might be a very first journey into test automation as applied to creating and testing the online word. If you have a software development background, or years in programming-related roles, it is very possible that you will find alternative and perhaps more suitable solutions for your own specific needs. 
+This information is intended for content developers who are dipping their toes into automated testing. If you have a software development background, or have spent years in programming-related roles, it is likely that you will find alternative and perhaps more suitable solutions for your own specific needs.
 
-## What to expect from here on in
+If you're still with us, you _will_ need to be a little familiar with a programming mindset - JavaScript experience in particular would be a lot of help. While I won't explain the absolute basics (... plenty of online resources already do that) I'll be sure to point out when and where the code verges on the idiomatic and is potentially confusing.
 
-Following this introduction, we cover the following areas - it's recommended that you work through them in the order presented:
+But learn some JavaScript - it's fun!
 
-- Setting things up - installing required software
-- A first proof-of-concept test
-- Checking pages for the right content
-- Organising testing, playback and reporting
-- Opening the hood on Taiko and JavaScript
-- Adding new functionality
-- Dockerising your content testing environment
-
-Let's discover **Docusaurus in less than 5 minutes**.
-
-## Getting Started
-
-Get started by **creating a new site**.
-
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
-
-### What you'll need
-
-- [Node.js](https://nodejs.org/en/download/) version 14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
