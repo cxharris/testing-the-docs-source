@@ -8,7 +8,7 @@ It turns out that many of the test tools we'll be  using have a set of common de
 
 If possible, install the software packages in the order in which they appear in this section - it makes some parts of this setup process a little easier.
 
-If you are unfamiliar with these software packages, and generally hacking around with your computer, you may find these steps frustrating. The truth is, all computers are different (and have different inventories of installed software) and no set of installation instructions can be guaranteed to work in all cases. So please don't get despondent - know that thousands of people before you have probably encountered the same issues and that help is often just a couple of internet searches away.
+If you are unfamiliar with these software packages, and generally noodling around with your computer, you may find these early steps frustrating. The truth is, all computers are different and no set of installation instructions can be guaranteed to work in all cases. So please don't get despondent if it takes a little time to get this right - know that thousands of people before you have probably encountered the same issues and that help is often just a couple of internet searches away.
 
 ## Git
 
@@ -16,6 +16,20 @@ Wikipedia describes Git as *Software for tracking changes in any set of files*. 
 
 Get Git from https://git-scm.com/downloads, invoke the installation utility and follow the prompts through, remembering to select the options that relate to using Git via Git Bash if you are using Windows.
 
+Even if you have never used Git before, you are likely to have heard of it and GitHub. We'll cover just a few essential Git commands here, as there is a vast amount of information already available on the web.
+
+## Node.js
+When JavaScript was originated, it could only run inside a browser. Node.js is a JavaScript runtime that liberates JavaScript from the browser, allowing it to become a first-class citizen in the world of programming languages, able to run outside of a browser. We will use several Node.js packages as we build up our example test suites.
+
+You can download and install it from https://nodejs.org/en/download/ by choosing your operating system and architecture. Follow the installation instructions and the best advice is to use Google if you hit problems or need more explicit help. If you have already installed one or more of these packages, just skip the relevant section.
+
+When Node.js (often called simply *Node*) you'll have access to the `node` executable in a command line or terminal.
+
+After installing Node, you can type `node --version` in a command line or terminal - if it's been installed correctly, you'll get a reply like `v14.16.1`. Of course the precise version doesn't matter as long as you install from an obviously current download. When you install Node, you also install `npm` which stands for *Node Package Manager* - Node's default package manager, which gives you the ability to install Node's massive ecosystem of add-ons. You will probably need to close down and reopen any command windows or terminals before you can issue commands like `node --version` - the installation modifies your path and this process refreshes your environment.
+
+Once you've installed Node, we can use npm to install every other package we need - and we can do this from within VSCode's integrated terminal!
+
+Also installed is a program called `npx` (Node Package Execute) which allows us to run any Node package that exists in the global external npm registry without even installing it. It's great for one-off initialisation of projects when we don't want the overhead of permanently installing little-used libraries.
 ## Visual Studio Code
 Visual Studio Code is a powerful and popular source code editor available for all major platforms. Originally developed by Microsoft, most of its source code has now been released as open source under the MIT license. It's fast and extensible - you can add new functionality to it by downloading *extensions* that offer support for various programming and content creation languages - such as JavaScript and Markdown and many more.
 
@@ -37,16 +51,8 @@ I've configured my Windows installation to use Git Bash as the default integrate
 
 :::
 
-## Node.js
-When JavaScript was originated, it could only run inside a browser. Node.js is a JavaScript runtime that liberates JavaScript from the browser, allowing it to become a first-class citizen in the world of programming languages. We will use several Node.js packages as we build up our example test suites.
 
-You can download and install it from https://nodejs.org/en/download/ by choosing your operating system and architecture. Follow the installation instructions and the best advice is to use Google if you hit problems or need more explicit installation instructions. If you have already installed one or more of these packages, just skip the relevant section.
 
-When Node.js (often called simply *node*) you'll have access to the `node` executable in a command line or terminal.
-
-After installing Node, you can type `node --version` in a command line or terminal - if it's been installed correctly, you'll get a reply like `v14.16.1`. Of course the precise version doesn't matter as long as you install from an obviously current download. When you install Node, you also install `npm` which stands for *Node Package Manager* - Node's default package manager, which gives you access to Node's massive ecosystem of add-ons. You will probably need to close down and reopen any command windows or terminals before you can issue commands like `node --version` - the installation modifies your path and this process refreshes your environment.
-
-Once you've installed Node, we can use npm to install every other package we need - and we can do this from within VSCode's integrated terminal!
 
 ### Launching VSCode and setting up a project
 1. Using your preferred method, create a directory in which to manage your suite of content tests - I'm going to use `D:\content-testing-resources`. My `C` drive keeps filling up behind my back so I tend to use `D` whenever I know I have a choice!

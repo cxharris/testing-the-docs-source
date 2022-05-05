@@ -3,17 +3,12 @@ sidebar_position: 1
 ---
 
 # Automated doc testing
-This part of the site focuses on using automated tools to test documentation and content outputs. 
 
-The core idea is that we can use existing automation tools and techniques to root out content errors, in much the same way that software engineers can use the same tools to identify coding errors.
-
-## Why do it?
-
-Being able to deliver our docs online instead of in printed form is an overdue but welcome blessing for most tech writers. But there _can_ be a few headaches. Our ability to publish thousands of pages at the press of a button makes it impossible to review the outputs for correctness each time. Errors creep in - and when they do, it can get messy very quickly. 
+Being able to deliver our docs online instead of in printed form is an overdue but welcome blessing for most tech writers. But there _can_ be a few headaches. Our ability to repeatedly publish thousands of pages at the press of a button makes it impossible to review the outputs for correctness each time. Errors creep in - and when they do, it can get messy very quickly. 
 
 What's needed is a way to harness the power of automation to test and validate our content, eliminating a lot of the tedium and mistakes that happen when human beings are forced to do the job. Even better, if this task can be performed by the same technical writers and content developers who maintain the information in the first place, then we can set up a virtuous feedback loop that amplifies the power of writing teams.
 
-*Automated browser testing tools* are a well-established segment of the software industry, used by engineers everywhere to test their web applications. But there's also a huge latent potential for their productive use in documentation and technical content workflows. What's more, with online content, the universe of possible tests is vastly smaller than is the case across the general reach of software development, making the entire proposition eminently workable, even for very small teams or perhaps even solo writers.
+*Automated browser testing tools* are a well-established segment of the software industry, used by engineers everywhere to test their web applications. But there's also a huge latent potential for their productive use in documentation and technical content workflows. What's more, with online content, the universe of possible tests is vastly smaller than is the case across the general reach of software development, making the entire proposition eminently workable, even for very small teams and even solo writers.
 ## Use cases
 
 In case you're wondering what kinds of things it's possible to automatically test, here's a taster:
@@ -31,15 +26,21 @@ In case you're wondering what kinds of things it's possible to automatically tes
 - Identifying situations where there are inconsistencies across the site
 - Being part of the effort to prevent proscribed information from leaving a secure facility, such as a data room
 
-What can make things challenging is that there's no one-size-fits-all approach to these tests. It depends on all sorts of factors relating to how your content website was built or generated. In addition, in the EU at least, there are often cookie-warning popups that have to be navigated before the actual contents of a site can be examined. All of this combines to make the effort non-trivial but worth it in the end - you'll be in a position where you can hear the alarm bells ringing well before senior management is even aware that anything is wrong!
+What can make things challenging is that there's no one-size-fits-all approach to such tests, and they all require resources to develop and maintain. 
+
+It turns out that very often, these resource requirements are modest and can be easily accommodated in typical project budgets. Moreover, if output accuracy and quality is especially important to you, then their value becomes even greater.
 
 ### Batteries not included
 For the sake of being explicit, we are _not_ in the business of using automated tests to drive the execution of embedded code examples. This is a great idea and is done well in the Rust documentation (https://doc.rust-lang.org/rustdoc/documentation-tests.html). In the present context, our goal is to explore an approach to testing and validating _regular content_ itself - something that seems to have been neglected in common practice.
 
+Neither are we in the business of testing PDF outputs. That subject has the potential to be a whole web site on its own and presents unique challenges to anyone seeking to validate and verify PDF content. Not in scope for now.
+
 ## If we only had a plan!
 Remember I said there's no one-size-fits-all kind of solution? So we're going to explore a bunch of automated test tools that vary in their approaches, and assess them for their suitability for testing doc output, implementing the same set of tests in each of the different tools, so that you can form a valid judgment of what jives best with your writing practices and testing needs.
+
+For a sample document, we'll use the pages you're currently reading on this very site (http://cxharris.github.io), with occasional side-quests to other sites built with different technologies.
 ## Audience
-This information is intended for content developers who are dipping their toes into automated testing. If you have a software development background, or have spent years in programming-related roles, it is likely that you will find alternative and perhaps more suitable solutions for your own specific needs.
+This information is intended for content developers who are dipping their toes into automated testing - experts will easily be able to find more concise sources elsewhere.
 
 If you're still with us, you _will_ need to be a little familiar with a programming mindset - JavaScript experience in particular would be a lot of help. While I won't explain the absolute basics (... plenty of online resources already do that) I'll be sure to point out when and where the code verges on the idiomatic and is potentially confusing.
 
