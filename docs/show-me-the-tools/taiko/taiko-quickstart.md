@@ -1,19 +1,15 @@
 # Taiko quickstart
+This section is a gentle introduction to Taiko and some of the tools we've chosen to use with it. As well as presenting basic Taiko commands, it demonstrates the kind of workflows we'll use when we ramp up the complexity as we develop our test suites. 
+
+
 
 ## Quick start
 
-If you have installed all of the prerequisites, you can launch Taiko by simply typing the following at the VSCode command prompt (accessible via `CTRL '` from within VSCode) at the root of your designated test folder:
-
-
+After installing all of the prerequisites, you can launch Taiko by simply typing the following at the VSCode command prompt (accessible via `CTRL '` from within VSCode) at the root of your designated test folder:
 
 ```
 npx taiko
 ```
-
-
-
-
-
 <details>
   <summary><b>npx</b></summary>
   <div>
@@ -22,7 +18,7 @@ npx taiko
   </div>
 </details>
 
-As if that isn't enough, it also downloads Chromium, which is the browser environment it will use to automate its tests. Depending on your internet connection, all this might take a couple of minutes - that Chromium download is almost 200MB.
+It also downloads Chromium - the browser environment used to automate our tests. Depending on your internet connection, all this might take a couple of minutes - that Chromium download is almost 200MB.
 
 When it's done, you'll end up in the Taiko *recorder*:
 
@@ -35,7 +31,19 @@ Type .api for help and .exit to quit
 
 >
 ```
-Taiko's recorder is a special wrapper that sits above Node's command line interface, so you can also use it to invoke Node packages or JavaScript code. But if this sounds very new to you, don't worry - we'll take it slowly initially.
+Taiko's *recorder* is a special command line interface designed to execute Taiko commands.
+
+<details>
+<summary>Command line interfaces</summary>
+<div>
+We'll frequently use two command line interfaces - the one within VSCode, and Taiko's *recorder*. It's important, particularly when starting out, to be aware of *which* command line interface you are using - you can usually tell which is which by examining the command line prompt.
+
+* The VSCode command line prompt might be a `$` sign (for Git bash) or it might look like a file path followed by an angle bracket (e.g. C:\my-taiko-tests >) if you've chosen to use CMD rather than Git bash. 
+* The Taiko command prompt is an isolated right angle bracket: `>` and you get to it by entering the command `npx Taiko` at the VSCode command prompt. So the VSCode command prompt is on the road to Taiko.
+
+Don't worry too much about this - it's worth mentioning at this point, to try to avert confusion, but we'll get plenty of practice at using both.
+</div>
+</details>
 
 ### Automating a browser
 From within Taiko's recorder, type the following and hit ENTER:
@@ -50,7 +58,7 @@ Mine looks like this:
 
    <img src="/img/initial-chromium-window.png" alt="Chromium's initial window" width="600"/>
 
-We just issued the `openBrowser()` command to Taiko, and it duly opened a browser instance. Taiko also issued a `[PASS]` message to indicate that it was successful in executing our command:
+We just issued the `openBrowser()` command to Taiko, and it duly opened a browser instance. Taiko also issued a `[PASS]` message in its recorder output to indicate that it was successful in executing our command:
 
 ```
 > openBrowser()
@@ -129,6 +137,14 @@ const { openBrowser, goto, click, closeBrowser } = require('taiko');
     }
 })();
 ```
-Even if you don't code, you can see the commands you've just issued - `openBrowser()`, `goto("google.com")` and `click("I agree")`. Indeed, these commands are surrounded by bits of JavaScript that may look strange, but at least you can see the core of the program that's getting built in the background. And what's with this `await` that precedes our commands? And what's all that other stuff like `try`, `catch` and `finally`? More of all this later, but for now, just understand that every command we type in the recorder is marshalled into this program that's accumulating in the background, and that the main *meat* of the program - its main sequence of actions - lies in that piece of the program that lies inside the section `try{ <lots of code here>}`.
+Even if you don't call yourself a programmer, you can see the commands you've just issued - `openBrowser()`, `goto("google.com")` and `click("I agree")`. They happen to be surrounded by bits of JavaScript that may look strange, but you can see the general shape of the program that's getting built in the background. And what's with this `await` that precedes our commands? And what's all that other stuff like `try`, `catch` and `finally`? More of all this later, but for now, just understand that every command we type in the recorder is marshalled into this program that's accumulating in the background, and that the main *meat* of the program - its main sequence of actions - lies in that piece of the program contained in that *try block*:
+```
+try {
+        await openBrowser();
+        await goto("google.com");
+        await click("I agree");
+    }
+```
 
-### Running a program outside the recorder
+
+#### Running a program outside the recorder
