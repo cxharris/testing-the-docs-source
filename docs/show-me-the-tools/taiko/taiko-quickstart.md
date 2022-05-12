@@ -11,14 +11,14 @@ After installing all of the prerequisites, you can launch Taiko by simply typing
 npx taiko
 ```
 <details>
-  <summary><b>npx</b></summary>
+  <summary><code>npx</code></summary>
   <div>
-    <div> ... recall that the command <b>npx</b> lets us run any Node package hosted at the central registry without installing it. Of course, there being no such thing as magic, when we use `npx` we usually have to wait for the package to download to our local system before it can run. Note that `npx` also checks to see if your package - in this case `taiko` - is the name of an executable on your system PATH or in your local project's binaries and will execute it if you have so happened to have already installed it, which you can you if you eventually get tired of waiting for it to download every time.</div>
+    <div> The command <code>npx</code> lets us run any Node package hosted at the central registry without installing it. Of course, there being no such thing as magic, when we use <code>npx</code> we usually have to wait for the package to download to our local system before it can run. Note that <code>npx</code> also checks to see if your package - in this case <code>taiko</code> - is the name of an executable on your system PATH or in your local project's binaries and will execute it if you have so happened to have already installed it, which you can you if you eventually get tired of waiting for it to download every time.</div>
     <br/>
   </div>
 </details>
 
-It also downloads Chromium - the browser environment used to automate our tests. Depending on your internet connection, all this might take a couple of minutes - that Chromium download is almost 200MB.
+This command downloads everything we need (if you don't already have it cached), including Chromium - the browser environment used to automate our tests. Depending on your internet connection, all this might take a couple of minutes - that Chromium download is almost 200MB.
 
 When it's done, you'll end up in the Taiko *recorder*:
 
@@ -75,7 +75,7 @@ Your browser instance goes to `google.com` and displays Google's cookie warning 
 
    <img src="/img/google-cookie-warning.png" alt="Google cookie warning dialog" width="600"/>
 
-This is because when a Taiko browser session starts, it creates an environment without any cookies - to ensure that every 'test' begins in the same state. So we have to navigate our way through this. It has no memory of when you, as an individual, last used your browser to visit Google - it's as if someone visited the site for the first time. That's why we get the boring cookie warnings.
+This appears because when a Taiko browser session starts, it creates an environment without any cookies - to ensure that every session begins in the same vanilla state. So we have to navigate our way through the dialog automatically as the session has no memory of when you, as an individual, last used your browser to visit Google - it's as if someone visited the site for the first time. That's why we get the boring cookie warnings.
 
 Type the command:
 
@@ -148,3 +148,52 @@ try {
 
 
 #### Running a program outside the recorder
+You can easily save a snapshot of the generated code to a file. To save it to a file called *googleTest.js* type:
+
+```
+.code googleTest.js
+```
+
+This immediately creates the file in the very directory at which you invoked Taiko in the first place.
+
+Type `.exit` to leave Taiko and return to the VSCode command line. When you do this, the Chromium browser closes automatically.
+
+Observe that a file called *googleTest.js* now exists in the filesystem (via `ls` or `dir` or an equivalent command). The `.js` extension is standard for JavaScript files.
+
+We know what's inside that file, because we reviewed its contents earlier when we issued the first `.code` command. But if you wanted to browse it again, just click on the file name in the VSCode Explorer, whereupon it will open in VSCode's text editor.
+
+From the VSCode command line, execute *googleTest.js* by typing:
+
+```
+npx taiko googleTest.js
+```
+
+On my machine, I get the following output:
+
+```
+$ npx taiko googleTest.js 
+Downloading Chromium r967620 - 177.1 Mb [====================] 100% 0.0s
+[PASS] Browser opened
+[PASS] Navigated to URL http://google.com
+[PASS] Clicked element matching text "I agree"  1 times
+[PASS] Browser closed
+```
+What happened here was that we reran the tests we manually created earlier. By default, running tests this way happens in *headless* mode, where the browser operates in the background and doesn't open. But we can see that all tests passed because the key commands are tagged `[PASS]`.
+
+If you'd prefer to see the browser going about its business, type the following instead:
+
+```
+npx taiko googleTest.js --observe
+```
+
+### Installing Taiko properly
+The downside of using the `npx` command to invoke Taiko is that it can involve a lot of waiting around for stuff to download. For me, this gets old really quickly.
+
+To avoid this, you can install Taiko properly - visit https://docs.taiko.dev/installing/ to review the latest installation instructions, which are quite straightforward. *Global* installation installs Taiko for use across your entire machine, while *Local* installation installs it just in the current project, which can be useful if you need to experiment with different versions of Taiko in different projects. Do not install Taiko as a `root` user. While developing this content, I opted to keep things simple and install Taiko globally. 
+
+When you've installed Taiko this way, you can still invoke it using `npx taiko` but your installed version will be resolved, recognised and executed and you won't have to wait for the download.
+
+
+
+
+
