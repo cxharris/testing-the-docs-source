@@ -1,3 +1,8 @@
+---
+id: taiko-quickstart
+sidebar_position: 1
+---
+
 # Taiko quickstart
 This section is a gentle introduction to Taiko and some of the tools we've chosen to use with it. As well as presenting basic Taiko commands, it demonstrates the kind of workflows we'll use when we ramp up the complexity as we develop our test suites. 
 
@@ -66,53 +71,38 @@ We just issued the `openBrowser()` command to Taiko, and it duly opened a browse
 ```
 If you have more than one monitor, it's always useful to drag the Chromium browser window to some free screen real estate, so that we can see both the VSCode window where we issue commands to the recorder, and the corresponding actions it invokes on the browser instance itself. If you've just one monitor, then the best thing to do is to tile your windows as best you can.
 
-There are other commands, try:
+There are several other similarly simple commands. Try:
 
 ```
-goto("google.com")
+goto("https://cxharris.github.io/docs/doc-testing/intro")
 ```
-Your browser instance goes to `google.com` and displays Google's cookie warning dialog:
+Your browser instance flips to visit `https://cxharris.github.io/docs/doc-testing/intro`, which of course is the introduction page to this very assemblage of online content.
 
-   <img src="/img/google-cookie-warning.png" alt="Google cookie warning dialog" width="600"/>
 
-This appears because when a Taiko browser session starts, it creates an environment without any cookies - to ensure that every session begins in the same vanilla state. So we have to navigate our way through the dialog automatically as the session has no memory of when you, as an individual, last used your browser to visit Google - it's as if someone visited the site for the first time. That's why we get the boring cookie warnings.
-
-Type the command:
+Now type the command:
 
 ```
-click("I agree")
+click("Prerequisites")
 ```
 
-You might *just* notice a red rectangle surrounding the "I agree" button in the browser before it is automatically clicked and we get to the regular Google home page.
+You might *just* notice a red rectangle surrounding the "Prereqyuisites" item in the table of contents before it is automatically clicked and we get to the *prerequisites* page that happens to have the url https://cxharris.github.io/docs/Prerequisites.
 
 See how the Taiko recorder keeps us up to date with the status of our work:
 
 ```
 > openBrowser()
 [PASS] Browser opened
-> goto("google.com")
-[PASS] Navigated to URL http://google.com
-> click("I agree")
-[PASS] Clicked element matching text "I agree"  1 times
->
+> goto("https://cxharris.github.io/docs/doc-testing/intro")
+[PASS] Navigated to URL https://cxharris.github.io/docs/doc-testing/intro
+> click("Prerequisites")
+[PASS] Clicked element matching text "Prerequisites"  1 times
 ```
-
-:::note
-
-It's possible that due to your location or other factors, you may not get the Google cookie warning dialog. If this is the case, the `click("I agree")` test will fail and you'll see a failure message in your Taiko output:
-
-```
-[FAIL] Error: Element with text I agree not found, run `.trace` for more info.
-```
-
-:::
-
-Look how we just issued the command `click("I agree")` to automatically click the button with the "I agree" text. This is what's meant by Taiko's *black box* philosophy. There was no need for us to examine the underlying code of the web page - all we had to do was *look* for an onscreen object with some designated text, and ask Taiko to click it. 
+We just issued the command `click("Prerequisites")` to tell Taiko to automatically click the table of contents link containing the text "Prerequisites". This is what's meant by Taiko's *black box* philosophy. There was no need for us to examine the underlying code of the web page - all we had to do was *look* for an onscreen object with some designated text, and ask Taiko to click it. 
 
 ### Behind the scenes
 We've just run a few of Taiko's commands in its recorder.
 
-Behind the scenes, Taiko is maintaining a list of commands for the session, and formatting them into a little JavaScript program that can run on its own - effectively giving you the power of repeating a sequence of commands many many times, whenever you want, without typing them in again.
+Behind the scenes, Taiko is maintaining a list of commands for the session, and formatting them into a little JavaScript program that Taiko can run in batch mode - effectively giving you the power of repeating a sequence of commands many many times, whenever you want, without typing them in again.
 
 To see Taiko's working copy of this code, you can just type the following from within Taiko's recorder:
 
@@ -123,13 +113,13 @@ Don't forget the dot `.` at the beginning.
 
 On my system, Taiko prints out:
 
-```
+```JavaScript
 const { openBrowser, goto, click, closeBrowser } = require('taiko');
 (async () => {
     try {
         await openBrowser();
-        await goto("google.com");
-        await click("I agree");
+        await goto("https://cxharris.github.io/docs/doc-testing/intro");
+        await click("Prerequisites");
     } catch (error) {
         console.error(error);
     } finally {
@@ -137,45 +127,44 @@ const { openBrowser, goto, click, closeBrowser } = require('taiko');
     }
 })();
 ```
-Even if you don't call yourself a programmer, you can see the commands you've just issued - `openBrowser()`, `goto("google.com")` and `click("I agree")`. They happen to be surrounded by bits of JavaScript that may look strange, but you can see the general shape of the program that's getting built in the background. And what's with this `await` that precedes our commands? And what's all that other stuff like `try`, `catch` and `finally`? More of all this later, but for now, just understand that every command we type in the recorder is marshalled into this program that's accumulating in the background, and that the main *meat* of the program - its main sequence of actions - lies in that piece of the program contained in that *try block*:
+Even if you don't call yourself a programmer, you can see the commands you've just issued - `openBrowser()`, `goto("https://cxharris.github.io/docs/doc-testing/intro")` and `click("Prerequisites")`. They happen to be surrounded by bits of JavaScript that may look strange, but you can see the general shape of the program that's getting built in the background. And what's with this `await` that precedes our commands? And what's all that other stuff like `try`, `catch` and `finally`? More of all this later, but for now, just understand that every command we type in the recorder is marshalled into this program that's accumulating in the background, and that the main *meat* of the program - its main sequence of actions - lies in that piece of the program contained in that *try block*:
 ```
 try {
         await openBrowser();
-        await goto("google.com");
-        await click("I agree");
+        await goto("https://cxharris.github.io/docs/doc-testing/intro");
+        await click("Prerequisites");
     }
 ```
 
 
 #### Running a program outside the recorder
-You can easily save a snapshot of the generated code to a file. To save it to a file called *googleTest.js* type:
+You can easily save a snapshot of the generated code to a file. To save it to a file called *getStartedTaiko.js* type:
 
 ```
-.code googleTest.js
+.code getStartedTaiko.js
 ```
 
-This immediately creates the file in the very directory at which you invoked Taiko in the first place.
+This immediately creates the specified file in the very directory at which you invoked Taiko in the first place.
 
-Type `.exit` to leave Taiko and return to the VSCode command line. When you do this, the Chromium browser closes automatically.
+Type `.exit` to leave the Taiko recorder and return to the VSCode command line. When you do this, the Chromium browser closes automatically.
 
-Observe that a file called *googleTest.js* now exists in the filesystem (via `ls` or `dir` or an equivalent command). The `.js` extension is standard for JavaScript files.
+Observe that a file called *getStartedTaiko.js* now exists in the filesystem (via `ls` or `dir` or an equivalent command). The `.js` extension is standard for JavaScript files.
 
 We know what's inside that file, because we reviewed its contents earlier when we issued the first `.code` command. But if you wanted to browse it again, just click on the file name in the VSCode Explorer, whereupon it will open in VSCode's text editor.
 
-From the VSCode command line, execute *googleTest.js* by typing:
+From the VSCode command line, execute *getStartedTaiko.js* by typing:
 
 ```
-npx taiko googleTest.js
+npx taiko getStartedTaiko.js
 ```
 
 On my machine, I get the following output:
 
 ```
-$ npx taiko googleTest.js 
-Downloading Chromium r967620 - 177.1 Mb [====================] 100% 0.0s
+$ npx taiko getStartedTaiko.js 
 [PASS] Browser opened
-[PASS] Navigated to URL http://google.com
-[PASS] Clicked element matching text "I agree"  1 times
+[PASS] Navigated to URL https://cxharris.github.io/docs/doc-testing/intro
+[PASS] Clicked element matching text "Prerequisites"  1 times
 [PASS] Browser closed
 ```
 What happened here was that we reran the tests we manually created earlier. By default, running tests this way happens in *headless* mode, where the browser operates in the background and doesn't open. But we can see that all tests passed because the key commands are tagged `[PASS]`.
@@ -183,15 +172,15 @@ What happened here was that we reran the tests we manually created earlier. By d
 If you'd prefer to see the browser going about its business, type the following instead:
 
 ```
-npx taiko googleTest.js --observe
+npx taiko getSTartedTaiko.js --observe
 ```
 
 ### Installing Taiko properly
-The downside of using the `npx` command to invoke Taiko is that it can involve a lot of waiting around for stuff to download. For me, this gets old really quickly.
+The downside of using the `npx` command to invoke Taiko is that it can involve a lot of waiting around for stuff to download. For me, this gets stale really quickly.
 
 To avoid this, you can install Taiko properly - visit https://docs.taiko.dev/installing/ to review the latest installation instructions, which are quite straightforward. *Global* installation installs Taiko for use across your entire machine, while *Local* installation installs it just in the current project, which can be useful if you need to experiment with different versions of Taiko in different projects. Do not install Taiko as a `root` user. While developing this content, I opted to keep things simple and install Taiko globally. 
 
-When you've installed Taiko this way, you can still invoke it using `npx taiko` but your installed version will be resolved, recognised and executed and you won't have to wait for the download.
+When you've installed Taiko this way, you can still invoke it using `npx taiko` but your installed version will be resolved, recognised and executed and you won't have to wait for the download. If you installed Taiko globally, you can also dispense with the `npx` and just issue the command `taiko` where necessary. For consistency, I will continue to use the slightly longer `npx taiko` flavour of the command.
 
 
 

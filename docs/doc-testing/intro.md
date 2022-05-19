@@ -1,4 +1,5 @@
 ---
+id: intro
 sidebar_position: 1
 ---
 
@@ -8,7 +9,7 @@ Being able to deliver our docs online instead of in printed form is an overdue b
 
 What's needed is a way to harness the power of automation to test and validate our content, eliminating a lot of the tedium and mistakes that happen when human beings are forced to do the job. Even better, if this task can be performed by the same technical writers and content developers who maintain the information in the first place, then we can set up a virtuous feedback loop that amplifies the power of writing teams.
 
-*Automated browser testing tools* are a well-established segment of the software industry, used by engineers everywhere to test their web applications. But there's also a huge latent potential for their productive use in documentation and technical content workflows. What's more, with online content, the universe of possible tests is vastly smaller than is the case across the general reach of software development, making the entire proposition eminently workable, even for very small teams and even solo writers.
+*Automated browser testing tools* are a well-established segment of the software industry, used by engineers everywhere to test their web applications. But there's also a huge latent potential for their productive use in online documentation and technical content workflows. What's more, with online content, the universe of possible tests is vastly smaller than is the case across the whole of software development, making the entire proposition eminently workable, even for very small teams and even solo writers.
 ## Use cases
 
 In case you're wondering what kinds of things it's possible to automatically test, here's a taster:
@@ -33,7 +34,7 @@ It turns out that very often, these resource requirements are modest and can be 
 ### Batteries not included
 For the sake of being explicit, we are _not_ in the business of using automated tests to drive the execution of embedded code examples. This is a great idea and is done well in the Rust documentation (https://doc.rust-lang.org/rustdoc/documentation-tests.html). In the present context, our goal is to explore an approach to testing and validating _regular content_ itself - something that seems to have been neglected in common practice.
 
-Neither are we in the business of testing PDF outputs. That subject has the potential to be a whole web site on its own and presents unique challenges to anyone seeking to validate and verify PDF content. Not in scope for now.
+Neither do we examine how to test PDF outputs. As an *output* format, PDF rarely contains enough information to enable the reconstruction of source-level content, making testing particularly difficult. A series of articles on testing PDF outputs - given these constraints - is planned for the future.
 
 ## If we only had a plan!
 Remember I said there's no one-size-fits-all kind of solution? So we're going to explore a bunch of automated test tools that vary in their approaches, and assess them for their suitability for testing doc output, implementing the same set of tests in each of the different tools, so that you can form a valid judgment of what jives best with your writing practices and testing needs.
