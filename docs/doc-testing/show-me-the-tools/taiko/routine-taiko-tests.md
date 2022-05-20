@@ -9,46 +9,33 @@ This section implements our set of standard tests using Taiko.
 ## Bring on the tests
 
 ### Check that a content page is alive
-From the Taiko recorder, we visit `https://stripe.com/docs` and accept their cookie warning if it is present. 
+From the Taiko recorder, we visit `https://cxharris.github.io/docs/intro` and accept their cookie warning if it is present. 
 
-Type:
+In the Taiko recorder, type:
 
 ```
 > openBrowser()
-> goto("https://stripe.com/docs")
-> click("Accept all")
+> goto("https://cxharris.github.io/docs/intro")
 >
 ```
-The `click("Accept all")` command clicks a button that signifies that you, the site visitor, accepts their cookie usage. If it doesn't appear, it's likely you are in a part of the world that doesn't have to bother about such things!
+Taiko will command the open browser to visit the specified page.
 
 Success looks like:
 ```
 > openBrowser()
 [PASS] Browser opened
-> goto("https://stripe.com/docs")
-[PASS] Navigated to URL https://stripe.com/docs
-> click("Accept all")
-[PASS] Clicked element matching text "Accept all"  1 times
+> goto("https://cxharris.github.io/docs/intro")
+[PASS] Navigated to URL https://cxharris.github.io/docs/intro
 >
 ```
-Failing the visit to the entire page looks like:
+A failed visit would look like:
 ```
 > openBrowser()
 [PASS] Browser opened
-> goto("https://stripe.com/does-not-exist")
-'[FAIL] Error: Navigation to url https://stripe.com/does-not-exist failed.
+> goto("https://cxharris.github.io/docs/intro")
+'[FAIL] Error: Navigation to url https://cxharris.github.io/docs/intro failed.
 ' +
   ' STATUS: 404, STATUS_TEXT: , run `.trace` for more info.'
 >
 ```
-Failing the cookie warning looks like:
-```
-> openBrowser()
-[PASS] Browser opened
-> goto("https://stripe.com/docs")
-[PASS] Navigated to URL https://stripe.com/docs
-> click("I am not a button")
-[FAIL] Error: Element with text I am not a button not found, run `.trace` for more info.
->
-```
-All pretty simple, and it's evident that the Stripe documentation site responds with a 404 error when you try to visit a non-existent page.
+All pretty straightforward stuff. One thing to mention is that page actions and browser actions have *implicit assertions*, meaning that you don't have to check them to identify a failure, they simply fail. Later, we'll see some situations in which you need to provide and *explicit assertion* to determine if a test has passed.

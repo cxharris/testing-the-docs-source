@@ -4,12 +4,13 @@ sidebar_position: 2
 ---
 
 
-It turns out that many of the test tools we'll be  using have a set of common dependencies. So let's install the obvious suspects just the once. I am using Windows - if you are using MacOS or Linux, you will probably be aware of the nuances of working in your own environment and the slight differences that apply when, say, using the command line. 
+It turns out that many of the test tools we'll be  using have a set of common dependencies. So let's install the obvious suspects just the once. I am using Windows - if you are using MacOS or Linux, you're going to be aware of the nuances of working in your own environment and the slight differences that apply when, say, using the command line. 
 
 If possible, install the software packages in the order in which they appear in this section - it makes some parts of this setup process a little easier.
 
 If you are unfamiliar with these software packages, and generally noodling around with your computer, you may find these early steps frustrating. The truth is, all computers are different and no set of installation instructions can be guaranteed to work in all cases. So please don't get despondent if it takes a little time to get this right - know that thousands of people before you have probably encountered the same issues and that help is often just a couple of internet searches away.
 
+If you have already installed one or more of these packages, just skip the relevant section.
 ## Git
 
 Wikipedia describes Git as *Software for tracking changes in any set of files*. It's a good idea to install it now, as it will be ready for us later on when we need it. As a bonus on Windows, during the installation process, you are offered (and should accept) the option of running Git inside of *Git Bash* - a Linux-like command window that's often more straightforward that the native Windows command line (and a lot lighter than PowerShell).
@@ -18,10 +19,12 @@ Get Git from https://git-scm.com/downloads, invoke the installation utility and 
 
 Even if you have never used Git before, you are likely to have heard of it and GitHub. We'll cover just a few essential Git commands here, as there is a vast amount of information already available on the web.
 
-## Node.js
-When JavaScript was originated, it could only run inside a browser. Node.js is a JavaScript runtime that liberates JavaScript from the browser, allowing it to become a first-class citizen in the world of programming languages, able to run outside of a browser. We will use several Node.js packages as we build up our example test suites.
+Importantly though, Git comes with that *Git Bash* option I mentioned earlier - and many of you may wish to hook this up into your VSCode environment (also installed later!) as a command line. 
 
-You can download and install it from https://nodejs.org/en/download/ by choosing your operating system and architecture. Follow the installation instructions and the best advice is to use Google if you hit problems or need more explicit help. If you have already installed one or more of these packages, just skip the relevant section.
+## Node.js
+When JavaScript was originated, it could only run inside a browser. Node.js is a JavaScript runtime that liberates JavaScript from the browser, allowing it to become a first-class citizen in the world of programming languages, and able to run outside of a browser, and access filesystem objects just like any other language. We will use several Node.js packages as we build up our example test suites.
+
+You can download and install it from https://nodejs.org/en/download/ by choosing your operating system and architecture. Follow the installation instructions and the best advice is to use Google if you hit problems or need more explicit help. 
 
 When Node.js (often called simply *Node*) you'll have access to the `node` executable in a command line or terminal.
 
@@ -47,7 +50,7 @@ At some stage, the installer offers you the following options, all of which you 
 
 I've configured my Windows installation to use Git Bash as the default integrated terminal - if you'd like to do the same, you can follow the instructions here: https://stackoverflow.com/questions/42606837/how-do-i-use-bash-on-windows-from-the-visual-studio-code-integrated-terminal.
 
-(... this is why I recommended installing Git before VSCode, so that Git Bash would be available as an option). The other most popular options are either PowerShell or CMD - just choose the option with which you are most familiar. I hardly ever use PowerShell, so am not the right person to answer any of your PowerShell questions!
+The other most popular options are either PowerShell or CMD, the time-honoured Windows command line - just choose the option with which you are most familiar. I hardly ever use PowerShell, so am not the right person to answer any of your PowerShell questions!
 
 :::
 

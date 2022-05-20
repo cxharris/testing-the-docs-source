@@ -7,7 +7,7 @@ sidebar_position: 1
 ## Tests
 Here are the initial simple tests we plan to automate in each of a selection of test tools:
 
-1. Check that a content page is alive - that your doc site is up and running.
+1. Check that a content page is alive - that your doc site is up and running. Even though this is a simple test (or at least it should be!) there can be one or two traps for the unwary, depending on how your documentation site operates.
 2. Confirm that a content page has a specific heading.
 3. Confirm that a content page does not contain some out-of-date text.
 4. Validate that a table-of-contents link ends up on the right page.

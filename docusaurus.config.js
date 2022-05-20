@@ -10,7 +10,7 @@ const config = {
   tagline: "... when eyeballs aren't enough",
   url: "https://cxharris.github.io",
   baseUrl: "/",
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   organizationName: "cxharris", // Usually your GitHub org/user name.
@@ -72,7 +72,7 @@ const config = {
             items: [
               {
                 label: "Tutorial",
-                to: "/docs/intro",
+                to: "/docs/doc-testing/intro",
               },
             ],
           },

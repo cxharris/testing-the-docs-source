@@ -45,5 +45,5 @@ This information is intended for content developers who are dipping their toes i
 
 If you're still with us, you _will_ need to be a little familiar with a programming mindset - JavaScript experience in particular would be a lot of help. While I won't explain the absolute basics (... plenty of online resources already do that) I'll be sure to point out when and where the code verges on the idiomatic and is potentially confusing.
 
-But learn some JavaScript - it's fun!
+But learn some JavaScript - it's fun! It will be especially useful if you work for a company outside the immediate tech sphere, such as, say, a small manaufacturing company that publishes assembly instructions on its website. 
 
