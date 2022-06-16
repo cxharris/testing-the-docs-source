@@ -22,19 +22,19 @@ Even if you have never used Git before, you are likely to have heard of it and G
 Importantly though, Git comes with that *Git Bash* option I mentioned earlier - and many of you may wish to hook this up into your VSCode environment (also installed later!) as a command line. 
 
 ## Node.js
-When JavaScript was originated, it could only run inside a browser. Node.js is a JavaScript runtime that liberates JavaScript from the browser, allowing it to become a first-class citizen in the world of programming languages, and able to run outside of a browser, and access filesystem objects just like any other language. We will use several Node.js packages as we build up our example test suites.
+When JavaScript was originated, it could only run inside a browser. Node.js is a JavaScript runtime that liberates JavaScript from the browser, allowing it to run outside of a browser, and, for example, access filesystem objects just like any other language. We will use several Node.js packages as we build up our example test suites.
 
 You can download and install it from https://nodejs.org/en/download/ by choosing your operating system and architecture. Follow the installation instructions and the best advice is to use Google if you hit problems or need more explicit help. 
 
 When Node.js (often called simply *Node*) has been successfully installed, you'll have access to the `node` executable in a command line or terminal.
 
-After installing Node, you can type `node --version` in a command line or terminal - if it's been installed correctly, you'll get a reply like `v14.16.1`. Of course the precise version doesn't matter as long as you install from an obviously current download. When you install Node, you also install `npm` which stands for *Node Package Manager* - Node's default package manager, which gives you the ability to install Node's massive ecosystem of add-ons. You will probably need to close down and reopen any command windows or terminals before you can issue commands like `node --version` - the installation modifies your path and this process refreshes your environment.
+After installing Node, you can type `node --version` in a _new_ command line or terminal - if it's been installed correctly, you'll get a reply like `v14.16.1`. Of course the precise version doesn't matter as long as you install from an obviously current download. When you install Node, you also install `npm` which stands for *Node Package Manager* - Node's default package manager, which gives you the ability to install Node's massive ecosystem of add-ons. You will need to close down and reopen any command windows or terminals before you can issue commands like `node --version` - the installation modifies your path and your environment variables get refreshed when you open a new terminal.
 
 Once you've installed Node, we can use npm to install every other package we need - and we can do this from within VSCode's integrated terminal!
 
 Also installed is a program called `npx` (Node Package Execute) which allows us to run any Node package that exists in the global external npm registry without even installing it. It's great for one-off initialisation of projects when we don't want the overhead of permanently installing little-used libraries.
 ## Visual Studio Code
-Visual Studio Code is a powerful and popular source code editor available for all major platforms. Originally developed by Microsoft, most of its source code has now been released as open source under the MIT license. It's fast and extensible - you can add new functionality to it by downloading *extensions* that offer support for various programming and content creation languages - such as JavaScript and Markdown and many more.
+Visual Studio Code (VSCode for short) is a powerful and popular source code editor available for all major platforms. Originally developed by Microsoft, most of its source code has now been released as open source under the MIT license. It's fast and extensible - you can add new functionality to it by downloading *extensions* that offer support for various programming and content creation languages - such as JavaScript and Markdown and many more.
 
 If you already use it, that's great. If not, do yourself a favour and check it out! Which is not to say that you can't use another editor to work your way through the examples if you really want to. But it *is* the editor that I'll be using to write them, so it might be worth switching (even temporarily) just for consistency.
 
@@ -54,9 +54,6 @@ The other most popular options are either PowerShell or CMD, the time-honoured W
 
 :::
 
-
-
-
 ### Launching VSCode and setting up a project
 1. Using your preferred method, create a directory in which to manage your suite of content tests - I'm going to use `D:\content-testing-resources`. My `C` drive keeps filling up behind my back so I tend to use `D` whenever I know I have a choice!
 1. Launch VSCode - you'll see a window that looks substantially like:
@@ -74,7 +71,7 @@ The other most popular options are either PowerShell or CMD, the time-honoured W
 
    A command terminal has opened up at the bottom, below the *Welcome* pane - you can see that mine is based on bash. This little key sequence - `CTRL '` - is going to become part of your muscle memory, because we'll be using the command terminal a lot!
 
-1. Type:
+1. In the just-opened command terminal, type:
 
    ```
    npm init --yes
@@ -90,5 +87,5 @@ The other most popular options are either PowerShell or CMD, the time-honoured W
 
 1. Type `CTRL` + `SHIFT` + `P` - that is `CTRL`, then `SHIFT` (without releasing `CTRL`) and then `P` (without releasing `CTRL` and `SHIFT`) and you'll see a menu popping up offering you a list of facilities relating to your installed extension(s) - which if this is a new installation, will only involve project manager.
 
-   Search for and select the command `Project Manager: Save Project`, then give it a name (say `content-testing-project`) and press `ENTER`. This saves your project in the project manager, so you can quickly return to it at any time in the future by relaunching VSCode and clicking the project manager icon in the left menu: <img src="/img/02-project-manager-icon.png" alt="The VSCode project manager icon" width="32"/>. It will present you with a selectable list of already saved projects.
+   Search for and select the command `Project Manager: Save Project`, then give it a name (say `content-testing-project`) and press `ENTER`. This saves your project in the project manager, so you can quickly return to it at any time in the future by relaunching VSCode and clicking the project manager icon in the left menu: <img src="/img/02-project-manager-icon.png" alt="The VSCode project manager icon" width="32"/>, which shows a selectable list of already-saved projects.
 

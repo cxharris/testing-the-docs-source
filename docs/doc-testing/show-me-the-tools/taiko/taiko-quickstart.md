@@ -4,13 +4,13 @@ sidebar_position: 1
 ---
 
 # Taiko quickstart
-This section is a gentle introduction to Taiko and some of the tools we've chosen to use with it. As well as presenting basic Taiko commands, it demonstrates the kind of workflows we'll use when we ramp up the complexity as we develop our test suites. 
+This section is a gentle introduction to Taiko and some of the tools we've chosen to use with it. As well as presenting basic Taiko commands, it demonstrates workflows we'll employ time and again in future exercises.
 
 
 
 ## Quick start
 
-After installing all of the prerequisites, you can launch Taiko by simply typing the following at the VSCode command prompt (accessible via `CTRL '` from within VSCode) at the root of your designated test folder:
+After installing all of the prerequisites, and creating a VSCode project to contain your test exercises, launch Taiko by typing the following at the VSCode command prompt (accessible via `CTRL '` from within VSCode) at the root of your test project folder:
 
 ```
 npx taiko
