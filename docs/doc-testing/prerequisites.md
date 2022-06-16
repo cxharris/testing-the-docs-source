@@ -8,7 +8,7 @@ It turns out that many of the test tools we'll be  using have a set of common de
 
 If possible, install the software packages in the order in which they appear in this section - it makes some parts of this setup process a little easier.
 
-If you are unfamiliar with these software packages, and generally noodling around with your computer, you may find these early steps frustrating. The truth is, all computers are different and no set of installation instructions can be guaranteed to work in all cases. So please don't get despondent if it takes a little time to get this right - know that thousands of people before you have probably encountered the same issues and that help is often just a couple of internet searches away.
+If you are unfamiliar with these software packages, and a bit nervous about noodling around with your computer, you may find these early steps frustrating. The truth is, all computers are different and no set of installation instructions can be guaranteed to work in all cases. So please don't get despondent if it takes a little time to get this right - know that thousands of people before you have probably encountered the same issues and that help is often just a couple of internet searches away.
 
 If you have already installed one or more of these packages, just skip the relevant section.
 ## Git
@@ -26,7 +26,7 @@ When JavaScript was originated, it could only run inside a browser. Node.js is a
 
 You can download and install it from https://nodejs.org/en/download/ by choosing your operating system and architecture. Follow the installation instructions and the best advice is to use Google if you hit problems or need more explicit help. 
 
-When Node.js (often called simply *Node*) you'll have access to the `node` executable in a command line or terminal.
+When Node.js (often called simply *Node*) has been successfully installed, you'll have access to the `node` executable in a command line or terminal.
 
 After installing Node, you can type `node --version` in a command line or terminal - if it's been installed correctly, you'll get a reply like `v14.16.1`. Of course the precise version doesn't matter as long as you install from an obviously current download. When you install Node, you also install `npm` which stands for *Node Package Manager* - Node's default package manager, which gives you the ability to install Node's massive ecosystem of add-ons. You will probably need to close down and reopen any command windows or terminals before you can issue commands like `node --version` - the installation modifies your path and this process refreshes your environment.
 

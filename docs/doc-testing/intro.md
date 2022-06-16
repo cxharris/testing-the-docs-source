@@ -41,9 +41,16 @@ Remember I said there's no one-size-fits-all kind of solution? So we're going to
 
 For a sample document, we'll use the pages you're currently reading on this very site (http://cxharris.github.io), with occasional side-quests to other sites built with different technologies.
 ## Audience
-This information is intended for content developers who are dipping their toes into automated testing - experts will easily be able to find more concise sources elsewhere.
+If you're a technical writr or content developer who has never explored the idea of automated testing, this material if for you! If you've been using automated testing for some time, then you'll probably be better served elsewhere, sorry!
 
 If you're still with us, you _will_ need to be a little familiar with a programming mindset - JavaScript experience in particular would be a lot of help. While I won't explain the absolute basics (... plenty of online resources already do that) I'll be sure to point out when and where the code verges on the idiomatic and is potentially confusing.
 
 But learn some JavaScript - it's fun! It will be especially useful if you work for a company outside the immediate tech sphere, such as, say, a small manaufacturing company that publishes assembly instructions on its website. 
+
+### Learning pathways
+If you are new to the whole idea of applying automated testing techniques to documentation, then work your way through the Taiko material. Even if Taiko is not on your tools shortlist and you decide not to use it - the experience will give you a great overview of how these frameworks operate, and introduce you to several vital techniques, regardless of your ultimate tool choice.
+
+The very same Taiko material would suit someone who wanted to begin to understand how automated end-user testing works, although he or she would have to find some more rigorous material later.
+
+If you're cool with and understand about automated testing tools, then you can pick and choose from the several tools offered.
 

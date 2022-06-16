@@ -7,11 +7,11 @@ title: Validate page title
 # Validate a page title
 
 ## Plan
-Check out this page and observe that its title is *Test page | Testing the docs*: `https://cxharris.github.io/docs`. The *title* is the text that occupies the browser tab, and not the so-called *title* of the topic displayed on the page.
+With your regular browser, visit `https://cxharris.github.io/docs` and observe that the page title is *Test page | Testing the docs*. The page *title* is the text that occupies the browser tab, and not the so-called *title* of any topic displayed on the page.
 
-First we'll use the Taiko recorder to visit `https://cxharris.github.io/docs`, and use the `title()` command to display the page title. 
+Then we'll use the Taiko recorder to visit `https://cxharris.github.io/docs`, and use the `title()` command to display the page title. 
 
-Then we'll save the generated code to a file, modifying it with some further simple commands to validate that the page title is correct. 
+We'll save the generated code to a file, modifying it with some further simple commands to validate that the page title is correct. 
 
 This extended workflow is another small but significant step in our learning, taking us closer to being able to write fully-developed tests that can validate all content. Eventually, you will be able to skip using the Recorder all together.
 
@@ -33,6 +33,14 @@ Taiko commands the browser to visit the specified page and output the title text
 > title()
 'Test page | Testing the docs'
 ```
+Note again how the `title()` command (in the Taiko Recorder) causes the page title to be output.
+
+```
+> title()
+'Test page | Testing the docs'
+```
+
+ A good way to think about this is that `title()` (including the parentheses!) is a command that has an 'answer' - in this case, the actual title of the web page. Lots of other commands work like this, but they other goals.
 
 Save the so-far-generated code by typing:
 
@@ -60,11 +68,11 @@ const { openBrowser, goto, title, closeBrowser } = require('taiko');
 ```
 Check that you can replay this little bit of generated test code by typing the following at the VSCode command prompt (*not* the recorder):
 ```
-taiko validateTitleTaiko.js
+npx taiko validateTitleTaiko.js
 ```
 You should get a confirmation with the output:
 ```
-$ taiko validateTitleTaiko.js 
+$ npx taiko validateTitleTaiko.js 
 [PASS] Browser opened
 [PASS] Navigated to URL https://cxharris.github.io/docs
 [PASS] Browser closed
@@ -125,13 +133,13 @@ const assert = require("assert").strict;
 ```
 Finally, having edited and saved it, run it:
 ```
-taiko validateTitleTaiko.js
+npx taiko validateTitleTaiko.js
 ```
 ## Results
 
 If the tests pass, you'll see the following output:
 ```
-$ taiko validateTitleTaiko.js 
+$ npx taiko validateTitleTaiko.js 
 [PASS] Browser opened
 [PASS] Navigated to URL https://cxharris.github.io/docs
 [PASS] Browser closed
@@ -140,7 +148,7 @@ Note again that the `assert` statement produces no output if successful!
 
 If the `assert` fails, you'll see:
 ```
-$ taiko validateTitleTaiko.js 
+$ npx taiko validateTitleTaiko.js 
 [PASS] Browser opened
 [PASS] Navigated to URL https://cxharris.github.io/docs
 AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
@@ -149,7 +157,7 @@ AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
 + 'Test page | Testing the docs'
 - 'Test page | This doesnt exist'
                 ^
-    at D:\information-products\content-testing\code-samples\taiko\validateTitleTaiko.js:8:12 {
+    at validateTitleTaiko.js:8:12 {
   generatedMessage: true,
   code: 'ERR_ASSERTION',
   actual: 'Test page | Testing the docs',

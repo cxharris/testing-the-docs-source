@@ -15,15 +15,18 @@ After installing all of the prerequisites, you can launch Taiko by simply typing
 ```
 npx taiko
 ```
+
+This command downloads everything we need (if you don't already have it cached), including Chromium - the browser environment used to automate our tests. Depending on your internet connection, all this might take a couple of minutes - that Chromium download is almost 200MB.
+
 <details>
-  <summary><code>npx</code></summary>
+  <summary><code>npx</code>?</summary>
   <div>
     <div> The command <code>npx</code> lets us run any Node package hosted at the central registry without installing it. Of course, there being no such thing as magic, when we use <code>npx</code> we usually have to wait for the package to download to our local system before it can run. Note that <code>npx</code> also checks to see if your package - in this case <code>taiko</code> - is the name of an executable on your system PATH or in your local project's binaries and will execute it if you have so happened to have already installed it, which you can you if you eventually get tired of waiting for it to download every time.</div>
     <br/>
   </div>
 </details>
 
-This command downloads everything we need (if you don't already have it cached), including Chromium - the browser environment used to automate our tests. Depending on your internet connection, all this might take a couple of minutes - that Chromium download is almost 200MB.
+
 
 When it's done, you'll end up in the Taiko *recorder*:
 

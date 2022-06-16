@@ -55,6 +55,6 @@ A failed visit would look like:
   ' STATUS: 404, STATUS_TEXT: , run `.trace` for more info.'
 >
 ```
-All pretty straightforward stuff. One thing to mention is that page actions and browser actions - like `openBrowser()`, `goto()` and others, have *implicit assertions*, meaning that you don't have to write code to check them to identify a failure, they simply fail - visibly. Later, we'll see some situations in which you need to provide an *explicit assertion* to determine if a test has passed.
+All pretty straightforward stuff. One thing to mention is that page actions and browser actions - like `openBrowser()`, `goto()` and others, have *implicit assertions*, meaning that you don't have to write code to check them to identify a failure, they simply fail - visibly. Later, we'll see some situations in which you need to provide an *explicit assertion* to determine if a test has passed. 
 
 Type `.exit` to leave the Taiko recorder.
